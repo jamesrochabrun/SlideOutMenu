@@ -10,16 +10,28 @@ import UIKit
 
 class HomeController: UITableViewController {
 
+    // MARK:- UI
     let menuController = MenuController()
+    let darkCoverView: UIView = {
+        let frame: CGRect = UIApplication.shared.keyWindow?.frame ?? .zero
+        let v = UIView(frame: frame)
+        v.alpha = 0
+        v.isUserInteractionEnabled = false
+        v.backgroundColor = UIColor.init(white: 0, alpha: 0.8)
+        return v
+    }()
+    
+    // MARK:- Private properties
     private let menuWidth: CGFloat = 300.0
-    var isMenuOpened = false
-    private let velocityOpenThreshold: CGFloat = 500
+    private var isMenuOpened = false
+    private let velocityOpenThreshold: CGFloat = 500.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavBar()
         setUpMenuController()
         setUpGestures()
+        setUpDarkCoverView()
     }
     
     // MARK:- Set up
@@ -44,11 +56,16 @@ class HomeController: UITableViewController {
         self.view.addGestureRecognizer(panGesture)
     }
     
+    private func setUpDarkCoverView() {
+        guard let window = UIApplication.shared.keyWindow else { return }
+        window.addSubview(darkCoverView)
+    }
+    
     // MARK:- Animation
     private func performAnimation(transform: CGAffineTransform) {
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.menuController.view.transform = transform
-            self.navigationController?.view.transform = transform
+            self.setViewsTransform(transform)
         })
     }
     
@@ -74,8 +91,20 @@ class HomeController: UITableViewController {
         x = max(0, x) // right
         
         let transform = CGAffineTransform(translationX: x, y: 0)
+        self.setViewsTransform(transform)
+        /// divide the  translation x by the width of the presented view
+        let alpha =  x / menuWidth
+        
+        print("alpha = \(alpha) x = \(x)")
+        darkCoverView.alpha = alpha
+    }
+    
+    private func setViewsTransform(_ transform: CGAffineTransform) {
+        
         menuController.view.transform = transform
         navigationController?.view.transform = transform
+        darkCoverView.transform = transform
+        darkCoverView.alpha = transform.isIdentity ? 0 : 1
     }
     
     private func handlePanEnded(_ gesture: UIPanGestureRecognizer) {
