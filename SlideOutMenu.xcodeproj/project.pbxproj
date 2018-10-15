@@ -13,6 +13,7 @@
 		09141D4D2173A711009BB3C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09141D4C2173A711009BB3C7 /* Assets.xcassets */; };
 		09141D502173A711009BB3C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09141D4E2173A711009BB3C7 /* LaunchScreen.storyboard */; };
 		09141D592173B318009BB3C7 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09141D582173B318009BB3C7 /* MenuController.swift */; };
+		09141D5B21740DED009BB3C7 /* BaseSlidingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09141D5A21740DED009BB3C7 /* BaseSlidingController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		09141D4F2173A711009BB3C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09141D512173A711009BB3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09141D582173B318009BB3C7 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		09141D5A21740DED009BB3C7 /* BaseSlidingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +71,19 @@
 		09141D572173B304009BB3C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				09141D5C21740DF4009BB3C7 /* Base */,
 				09141D472173A70E009BB3C7 /* HomeController.swift */,
 				09141D582173B318009BB3C7 /* MenuController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		09141D5C21740DF4009BB3C7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				09141D5A21740DED009BB3C7 /* BaseSlidingController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +160,7 @@
 				09141D482173A70E009BB3C7 /* HomeController.swift in Sources */,
 				09141D592173B318009BB3C7 /* MenuController.swift in Sources */,
 				09141D462173A70E009BB3C7 /* AppDelegate.swift in Sources */,
+				09141D5B21740DED009BB3C7 /* BaseSlidingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

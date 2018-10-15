@@ -28,10 +28,11 @@ class HomeController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = .red
         setUpNavBar()
-        setUpMenuController()
-        setUpGestures()
-        setUpDarkCoverView()
+        //setUpMenuController()
+      //  setUpGestures()
+        //setUpDarkCoverView()
     }
     
     // MARK:- Set up
@@ -50,11 +51,11 @@ class HomeController: UITableViewController {
         addChild(menuController)
     }
     
-    private func setUpGestures() {
-        
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        self.view.addGestureRecognizer(panGesture)
-    }
+//    private func setUpGestures() {
+//
+//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+//        self.view.addGestureRecognizer(panGesture)
+//    }
     
     private func setUpDarkCoverView() {
         guard let window = UIApplication.shared.keyWindow else { return }
@@ -70,35 +71,35 @@ class HomeController: UITableViewController {
     }
     
     // MARK:- Handlers
-    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-        
-        switch gesture.state {
-        case .changed: self.handlePanChanged(gesture)
-        case .ended: self.handlePanEnded(gesture)
-        default:
-            break
-        }
-    }
+//    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+//
+//        switch gesture.state {
+//        case .changed: self.handlePanChanged(gesture)
+//        case .ended: self.handlePanEnded(gesture)
+//        default:
+//            break
+//        }
+//    }
     
-    private func handlePanChanged(_ gesture: UIPanGestureRecognizer ) {
-        
-        let translation = gesture.translation(in: view)
-        var x = translation.x
-        if isMenuOpened {
-            x += menuWidth
-        }
-        x = min(menuWidth, x) // left
-        x = max(0, x) // right
-        
-        let transform = CGAffineTransform(translationX: x, y: 0)
-        self.setViewsTransform(transform)
-        /// divide the  translation x by the width of the presented view
-        let alpha =  x / menuWidth
-        
-        print("alpha = \(alpha) x = \(x)")
-        darkCoverView.alpha = alpha
-    }
-    
+//    private func handlePanChanged(_ gesture: UIPanGestureRecognizer ) {
+//
+//        let translation = gesture.translation(in: view)
+//        var x = translation.x
+//        if isMenuOpened {
+//            x += menuWidth
+//        }
+//        x = min(menuWidth, x) // left
+//        x = max(0, x) // right
+//
+//        let transform = CGAffineTransform(translationX: x, y: 0)
+//        self.setViewsTransform(transform)
+//        /// divide the  translation x by the width of the presented view
+//        let alpha =  x / menuWidth
+//
+//        print("alpha = \(alpha) x = \(x)")
+//        darkCoverView.alpha = alpha
+//    }
+//
     private func setViewsTransform(_ transform: CGAffineTransform) {
         
         menuController.view.transform = transform
@@ -106,26 +107,26 @@ class HomeController: UITableViewController {
         darkCoverView.transform = transform
         darkCoverView.alpha = transform.isIdentity ? 0 : 1
     }
-    
-    private func handlePanEnded(_ gesture: UIPanGestureRecognizer) {
-        
-        let translation = gesture.translation(in: view)
-        let velocity = gesture.velocity(in: view)
-        
-        if isMenuOpened {
-            if abs(velocity.x) > velocityOpenThreshold {
-                handleHide()
-                return
-            }
-            abs(translation.x) < menuWidth / 2 ? handleOpen() : handleHide()
-        } else {
-            if velocity.x > velocityOpenThreshold {
-                handleOpen()
-                return
-            }
-            translation.x < menuWidth / 2 ? handleHide() : handleOpen()
-        }
-    }
+//
+//    private func handlePanEnded(_ gesture: UIPanGestureRecognizer) {
+//
+//        let translation = gesture.translation(in: view)
+//        let velocity = gesture.velocity(in: view)
+//
+//        if isMenuOpened {
+//            if abs(velocity.x) > velocityOpenThreshold {
+//                handleHide()
+//                return
+//            }
+//            abs(translation.x) < menuWidth / 2 ? handleOpen() : handleHide()
+//        } else {
+//            if velocity.x > velocityOpenThreshold {
+//                handleOpen()
+//                return
+//            }
+//            translation.x < menuWidth / 2 ? handleHide() : handleOpen()
+//        }
+//    }
     
     @objc func handleOpen() {
         isMenuOpened = true
@@ -141,11 +142,15 @@ class HomeController: UITableViewController {
 // MARK:- DataSource
 extension HomeController {
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cellId")
+        cell.textLabel?.text = "Row: \(indexPath.row)"
+        return cell
     }
 }
+

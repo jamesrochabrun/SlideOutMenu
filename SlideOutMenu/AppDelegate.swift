@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setUp() {
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: HomeController())
+        window?.rootViewController = BaseSlidingController()
+       // window?.rootViewController = UINavigationController(rootViewController: UIViewController())
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
