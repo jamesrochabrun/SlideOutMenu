@@ -17,6 +17,7 @@
 		09141D5F217593DE009BB3C7 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09141D5E217593DE009BB3C7 /* CustomHeaderView.swift */; };
 		09141D6121759835009BB3C7 /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09141D6021759835009BB3C7 /* SpacerView.swift */; };
 		09141D6321759EF0009BB3C7 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09141D6221759EF0009BB3C7 /* ProfileImageView.swift */; };
+		09141D652175A2C4009BB3C7 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09141D642175A2C4009BB3C7 /* MenuItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		09141D5E217593DE009BB3C7 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		09141D6021759835009BB3C7 /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 		09141D6221759EF0009BB3C7 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		09141D642175A2C4009BB3C7 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				09141D5E217593DE009BB3C7 /* CustomHeaderView.swift */,
 				09141D6021759835009BB3C7 /* SpacerView.swift */,
 				09141D6221759EF0009BB3C7 /* ProfileImageView.swift */,
+				09141D642175A2C4009BB3C7 /* MenuItemCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09141D5F217593DE009BB3C7 /* CustomHeaderView.swift in Sources */,
+				09141D652175A2C4009BB3C7 /* MenuItemCell.swift in Sources */,
 				09141D6321759EF0009BB3C7 /* ProfileImageView.swift in Sources */,
 				09141D482173A70E009BB3C7 /* HomeController.swift in Sources */,
 				09141D6121759835009BB3C7 /* SpacerView.swift in Sources */,

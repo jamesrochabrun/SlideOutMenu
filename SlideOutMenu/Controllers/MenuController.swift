@@ -13,7 +13,6 @@ class MenuController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
     }
 }
 
@@ -25,9 +24,8 @@ extension MenuController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cellId")
-        cell.textLabel?.text = "Menu Item Row: \(indexPath.row)"
-        return cell
+        
+        return MenuItemCell(style: .default, reuseIdentifier: "cell")
     }
 }
 
