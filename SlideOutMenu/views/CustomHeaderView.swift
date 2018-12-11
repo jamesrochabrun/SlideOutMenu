@@ -70,7 +70,6 @@ class CustomHeaderView: UIView {
     private func arrangedSubViews() -> [UIView] {
         return [
             /// Profile image
-            UIView(),
             UIStackView(arrangedSubviews: [profileImageView, UIView()]),
             nameLabel,
             userNameLabel,

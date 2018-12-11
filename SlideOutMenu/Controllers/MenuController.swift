@@ -24,7 +24,6 @@ extension MenuController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         return MenuItemCell(style: .default, reuseIdentifier: "cell")
     }
 }
@@ -35,8 +34,14 @@ extension MenuController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return CustomHeaderView()
     }
+//
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 200.0
+//    }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200.0
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let slidingController = UIApplication.shared.keyWindow?.rootViewController as? BaseSlidingController
+        slidingController?.didSelectItem(at: indexPath)
     }
 }

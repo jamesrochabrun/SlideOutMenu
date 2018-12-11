@@ -9,24 +9,29 @@
 import Foundation
 import UIKit
 
+class RightContainerView: UIView {}
+class MenuContainerView: UIView {}
+class DarkContainerView: UIView {}
+
+
 class BaseSlidingController: UIViewController {
     
-    let redView: UIView = {
-        let v = UIView()
+    let redView: RightContainerView = {
+        let v = RightContainerView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.backgroundColor = .red
         return v
     }()
     
-    let blueView: UIView = {
-        let v = UIView()
+    let blueView: MenuContainerView = {
+        let v = MenuContainerView()
         v.translatesAutoresizingMaskIntoConstraints = false
         v.backgroundColor = .blue
         return v
     }()
     
-    let darkCoverView: UIView = {
-        let v = UIView()
+    let darkCoverView: DarkContainerView = {
+        let v = DarkContainerView()
         v.backgroundColor = UIColor(white: 0, alpha: 0.7)
         v.alpha = 0
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -75,11 +80,11 @@ class BaseSlidingController: UIViewController {
     }
     
     private func setUpViewControllers() {
-
-        let homeController = HomeController()
+        
+        rightController = HomeController()
         let menuController = MenuController()
         
-        let homeView = homeController.view!
+        let homeView = rightController!.view!
         let menuView = menuController.view!
         
         homeView.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +112,7 @@ class BaseSlidingController: UIViewController {
             darkCoverView.trailingAnchor.constraint(equalTo: redView.trailingAnchor),
             ])
         
-        addChild(homeController)
+        addChild(rightController!)
         addChild(menuController)
     }
     
@@ -169,6 +174,35 @@ class BaseSlidingController: UIViewController {
         redViewLeadingConstraint.constant = 0
         isMenuOpened = false
         performAnimations()
+    }
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        
+        performRightViewCleanUp()
+        switch indexPath.row {
+        case 0:
+            let firstController = ListController()
+            redView.addSubview(firstController.view)
+            addChild(firstController)
+            rightController = firstController
+        case 1:
+            let secondController = BookMarkTableViewController()
+            redView.addSubview(secondController.view)
+            // dont forget to add it as a child
+            addChild(secondController)
+            rightController = secondController
+        default: break
+        }
+        
+        redView.bringSubviewToFront(darkCoverView)
+        closeMenu()
+    }
+    
+    var rightController: UIViewController?
+    
+    private func performRightViewCleanUp() {
+        rightController?.view.removeFromSuperview()
+        rightController?.removeFromParent()
     }
     
     fileprivate func performAnimations() {
