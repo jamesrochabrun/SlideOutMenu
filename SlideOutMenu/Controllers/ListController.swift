@@ -13,5 +13,7 @@ class ListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
+        navigationItem.title = "Lsists"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
